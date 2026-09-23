@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Website Analytics | CS Nova Digital Studio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://csnovadigitalstudio.goatcounter.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="analytics-page">
+
+<canvas id="particles"></canvas>
+<div class="space-glow"></div>
+
+<header class="navbar">
+  <div class="logo">
+    <img src="assets/logo.png" alt="CS Nova Digital Studio">
+  </div>
+
+  <nav class="analytics-nav">
+    <a href="index.html">Back to Website</a>
+    <a href="https://csnovadigitalstudio.goatcounter.com/" target="_blank" rel="noopener" class="btn">
+      Open Full Dashboard
+    </a>
+  </nav>
+</header>
+
+<main class="analytics-shell">
+  <section class="analytics-heading">
+    <p class="analytics-kicker">PRIVATE WEBSITE REPORT</p>
+    <h1>CS Nova Analytics</h1>
+    <p>
+      Review monthly visits and the new/returning visitor events recorded by your website.
+    </p>
+  </section>
+
+  <section class="analytics-summary">
+    <article class="analytics-stat-card">
+      <span class="analytics-stat-label">Total monthly visits</span>
+      <strong>All website pages</strong>
+      <small>Shown in the GoatCounter monthly graph below.</small>
+    </article>
+
+    <article class="analytics-stat-card">
+      <span class="analytics-stat-label">New visitors</span>
+      <strong>analytics/new-visitor</strong>
+      <small>A browser visiting your website for the first recorded month.</small>
+    </article>
+
+    <article class="analytics-stat-card">
+      <span class="analytics-stat-label">Returning visitors</span>
+      <strong>analytics/returning-visitor</strong>
+      <small>A recognised browser returning in a later calendar month.</small>
+    </article>
+  </section>
+
+  <section class="analytics-notice">
+    <strong>How to read the report:</strong>
+    Set GoatCounter’s date range to a month. The overall total gives monthly visits.
+    The two analytics events show new and returning browsers for that month.
+  </section>
+
+  <section class="analytics-frame-card">
+    <div class="analytics-frame-header">
+      <div>
+        <h2>Monthly website activity</h2>
+        <p>You may be asked to sign in to your GoatCounter account.</p>
+      </div>
+      <button type="button" id="refreshAnalytics" class="card-btn primary">Refresh report</button>
+    </div>
+
+    <iframe
+      id="goatcounterDashboard"
+      src="https://csnovadigitalstudio.goatcounter.com/?hideui=1"
+      title="CS Nova GoatCounter analytics dashboard"
+      loading="eager"
+      referrerpolicy="strict-origin-when-cross-origin">
+    </iframe>
+  </section>
+
+  <section class="analytics-footnote">
+    <p>
+      New/returning classification begins after this update is published. It is browser-based:
+      changing device/browser or clearing browser storage can make a returning person appear new.
+    </p>
+  </section>
+</main>
+
+<script src="js/main.js"></script>
+<script>
+  const refreshButton = document.getElementById("refreshAnalytics");
+  const dashboardFrame = document.getElementById("goatcounterDashboard");
+
+  refreshButton.addEventListener("click", function () {
+    dashboardFrame.src = dashboardFrame.src;
+  });
+</script>
+</body>
+</html>

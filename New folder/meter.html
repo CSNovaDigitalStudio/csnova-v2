@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Online Presence Meter | CS Nova Digital Studio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+<div class="space-glow"></div>
+
+<!-- NAVBAR (same as index) -->
+<header class="navbar">
+  <div class="logo">
+    <img src="assets/logo.png" alt="CS Nova Digital Studio">
+  </div>
+
+  <div class="menu-toggle" id="menuToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <nav id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="index.html#services">Services</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="index.html#contact" class="btn">Get Started</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <h1>How Strong Is Your Online Presence?</h1>
+    <p>Tick what your business currently has and see your strength level.</p>
+  </div>
+</section>
+
+<section class="section dark">
+  <div class="container meter-layout">
+
+    <!-- LEFT: CHECKLIST -->
+    <div class="meter-left">
+      <h2>Tick What Your Business Has</h2>
+
+      <div class="meter-checklist">
+
+        <label>
+          <input type="checkbox" class="meter-box">
+          <strong>Business Logo</strong>
+          <small>Your own professional logo (not just plain text).</small>
+        </label>
+
+        <label>
+          <input type="checkbox" class="meter-box">
+          <strong>Branding</strong>
+          <small>Matching colours, fonts and style used consistently across your business.</small>
+        </label>
+
+        <label>
+          <input type="checkbox" class="meter-box">
+          <strong>Domain</strong>
+          <small>Your own website name like www.yourbusiness.co.za (not a free link).</small>
+        </label>
+
+        <label>
+          <input type="checkbox" class="meter-box">
+          <strong>Website</strong>
+          <small>A professional website explaining your services and how to contact you.</small>
+        </label>
+
+        <label>
+          <input type="checkbox" class="meter-box">
+          <strong>Company Profile (PDF)</strong>
+          <small>A professional document you can send to clients explaining your business.</small>
+        </label>
+
+        <label>
+          <input type="checkbox" class="meter-box">
+          <strong>Google Business Profile</strong>
+          <small>When people search your business on Google and see your reviews, location and contact details.</small>
+        </label>
+
+        <label>
+          <input type="checkbox" class="meter-box">
+          <strong>Email Address</strong>
+          <small>A professional email like info@yourbusiness.co.za (not Gmail or Yahoo).</small>
+        </label>
+
+        <label>
+          <input type="checkbox" class="meter-box">
+          <strong>WhatsApp Business</strong>
+          <small>A business WhatsApp with auto-replies and business info set up properly.</small>
+        </label>
+
+        <label>
+          <input type="checkbox" class="meter-box">
+          <strong>SEO Setup</strong>
+          <small>Your business appears on Google when people search for your services.</small>
+        </label>
+
+        <label>
+          <input type="checkbox" class="meter-box">
+          <strong>Business Cards</strong>
+          <small>Printed professional cards to give customers your details.</small>
+        </label>
+
+      </div>
+    </div>
+
+    <!-- RIGHT: STICKY GAUGE -->
+    <div class="meter-right">
+      <div class="gauge-card">
+        <div class="gauge">
+          <div class="needle" id="needle"></div>
+        </div>
+
+        <h2 id="strengthText">Weak</h2>
+        <p id="scoreText">0 / 10</p>
+        <div id="impactMessage" class="impact-message">
+            <div class="impact-icon">⚠</div>
+            <div class="impact-text">
+              Your business may be invisible to potential customers.
+            </div>
+          </div>
+
+          <div id="comparisonMessage" class="comparison-message">
+            Strong businesses close up to 2x more leads online.
+          </div>
+           
+        <a id="upgradeBtn"
+           href="https://wa.me/27635195475?text=Hi CS Nova,%0AI would like to increase my online presence score."
+           class="btn">
+           Upgrade My Business
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script src="js/main.js"></script>
+
+<script>
+const boxes = document.querySelectorAll(".meter-box");
+const needle = document.getElementById("needle");
+const strengthText = document.getElementById("strengthText");
+const scoreText = document.getElementById("scoreText");
+const upgradeBtn = document.getElementById("upgradeBtn");
+
+boxes.forEach(box => {
+  box.addEventListener("change", updateMeter);
+});
+
+function updateMeter(){
+  const total = boxes.length;
+  const checked = document.querySelectorAll(".meter-box:checked").length;
+  const percentage = checked / total;
+
+  const rotation = -90 + (percentage * 180);
+  needle.style.transform = `rotate(${rotation}deg)`;
+
+  scoreText.innerText = `${checked} / 10`;
+
+  const gauge = document.querySelector(".gauge");
+  const gaugeCard = document.querySelector(".gauge-card");
+
+  if(percentage <= 0.3){
+    strengthText.innerText = "Weak";
+    strengthText.style.color = "#ff3cac";
+    upgradeBtn.href = "https://wa.me/27635195475?text=Hi CS Nova,%0AMy online presence score is WEAK. I need help upgrading.";
+    const impact = document.getElementById("impactMessage");
+    const comparison = document.getElementById("comparisonMessage");
+
+    impact.classList.remove("average-state","strong-state");
+    impact.classList.add("weak-state");
+    impact.querySelector(".impact-text").innerText =
+      "You are losing customers to competitors who look more professional online.";
+
+    comparison.innerText =
+      "Strong businesses close up to 2x more leads than weak online profiles.";
+    upgradeBtn.classList.add("shake-alert");
+    gauge.classList.add("gauge-weak-glow");
+    gaugeCard.classList.add("weak-background");
+  }
+  else if(percentage <= 0.7){
+    strengthText.innerText = "Average";
+    strengthText.style.color = "#ffae00";
+    upgradeBtn.href = "https://wa.me/27635195475?text=Hi CS Nova,%0AMy online presence score is AVERAGE. I want to improve it.";
+    const impact = document.getElementById("impactMessage");
+    const comparison = document.getElementById("comparisonMessage");
+
+    impact.classList.remove("weak-state","strong-state");
+    impact.classList.add("average-state");
+    impact.querySelector(".impact-text").innerText =
+      "Your business is visible, but stronger competitors are winning more clients.";
+
+    comparison.innerText =
+      "Businesses with strong digital systems generate significantly more trust.";
+    upgradeBtn.classList.remove("shake-alert");
+    gauge.classList.remove("gauge-weak-glow");
+    gaugeCard.classList.remove("weak-background");
+  }
+  else{
+    strengthText.innerText = "Strong";
+    strengthText.style.color = "#00c6ff";
+    upgradeBtn.href = "https://wa.me/27635195475?text=Hi CS Nova,%0AMy online presence score is STRONG, but I want to scale further.";
+    const impact = document.getElementById("impactMessage");
+    const comparison = document.getElementById("comparisonMessage");
+
+    impact.classList.remove("weak-state","average-state");
+    impact.classList.add("strong-state");
+    impact.querySelector(".impact-text").innerText =
+      "Your foundation is strong. Scaling strategically can multiply your growth.";
+
+    comparison.innerText =
+      "High-authority businesses dominate search results and close premium clients.";
+    upgradeBtn.classList.remove("shake-alert");
+    gauge.classList.remove("gauge-weak-glow");
+    gaugeCard.classList.remove("weak-background");
+  }
+}
+</script>
+
+<script data-goatcounter="https://csnovadigitalstudio.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<script src="js/analytics.js"></script>
+</body>
+</html>

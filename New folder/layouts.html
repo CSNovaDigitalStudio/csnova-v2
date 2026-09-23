@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CS Nova Digital Studio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/layouts.js"></script>
+
+</head>
+<body>
+<div id="previewModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:2000;">
+  <button onclick="closePreview()" 
+          style="position:absolute; top:20px; right:20px; padding:10px 15px;">
+    Close
+  </button>
+
+  <iframe id="previewFrame"
+          style="width:90%; height:90%; margin:5% auto; display:block; border:none; border-radius:10px;">
+  </iframe>
+</div>
+<section class="hero">
+  <h1>Select Your Industry Layout</h1>
+  <p id="selectedPackageText">
+  Choose the layout style that fits your business.
+  </p>
+</section>
+<!-- TEMPLATES -->
+<section id="layouts" class="section dark">
+  <div class="container">
+    <h2>Choose Your Industry Layout</h2>
+    <p>
+    After selecting your package, you can choose a layout style 
+    designed specifically for your type of business.
+    </p>
+    <p style="max-width:700px; margin:20px auto; opacity:0.9;">
+      Every layout is customized with your branding, colours, services, images, and content. 
+      These are structured foundations — not generic copy-paste websites.
+      </p>
+
+    <div class="cards templates-grid">
+      
+      <div class="template-card">
+        <img src="assets/templates/business.png" alt="Business Website Template">
+        <h3>Corporate & Professional Layout</h3>
+        <p>Ideal for companies and professional service providers.</p>
+        <div class="template-actions">
+          <button class="card-btn" onclick="openPreview('https://csnovadigitalstudio.github.io/Plumbing-Template-2/')">Live Preview</button>
+
+          <a id="layout1Btn" class="card-btn primary">Select This Layout</a>
+        </div>
+      </div>
+
+      <div class="template-card">
+        <img src="assets/templates/service.png" alt="Service Website Template">
+        <h3>Service & Trades Layout</h3>
+        <p>Perfect for plumbers, electricians, and freelancers.</p>
+        <div class="template-actions">
+          <button class="card-btn" onclick="openPreview('https://csnovadigitalstudio.github.io/Consulting-Template-1/')">Live Preview</button>
+
+          <a id="layout2Btn" class="card-btn primary">Select This Layout</a>
+        </div>
+      </div>
+
+      <div class="template-card">
+        <img src="assets/templates/personal.png" alt="Personal Brand Template">
+        <h3>Personal Brand & Portfolio Layout</h3>
+        <p>Showcase yourself and your work professionally.</p>
+        <div class="template-actions">
+          <button class="card-btn" onclick="openPreview('https://csnovadigitalstudio.github.io/Construction-Template-1/')">Live Preview</button>
+
+          <a id="layout3Btn" class="card-btn primary">Select This Layout</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<script data-goatcounter="https://csnovadigitalstudio.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<script src="js/analytics.js"></script>
+</body>
+</html>
